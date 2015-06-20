@@ -1,0 +1,21 @@
+{
+    "name": "gmlo/cms",
+    "description": "CMS with  Laravel 5.1",
+    "authors": [
+        {
+            "name": "Giovanni Mac",
+            "email": "gmlo89@hotmail.com"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan vendor:publish"
+        ],
+        "post-update-cmd": [
+            "php artisan vendor:publish"
+        ]
+    },
+    "require": {
+        "laravelcollective/html": "~5.0"
+    }
+}
