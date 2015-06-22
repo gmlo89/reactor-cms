@@ -7,6 +7,6 @@
         </h1>
     </section>
     <section class="content">
-        Bienvenido {{ Auth::user()->name }}
+        Welcome {{ Auth::user()->name }}
     </section>
 @endsection

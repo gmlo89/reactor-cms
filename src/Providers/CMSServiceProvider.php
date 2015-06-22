@@ -7,6 +7,8 @@ use App\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Gmlo\CMS\CMS;
+use Blade;
+use Gmlo\CMS\Alert;
 
 class CMSServiceProvider extends ServiceProvider
 {
@@ -29,14 +31,15 @@ class CMSServiceProvider extends ServiceProvider
         $this->publishFiles();
 
         // Translations
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'cms');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'CMS');
 
         // Load our views
         $this->loadViewsFrom(__DIR__ . '/../views', 'CMS');
         $router->middleware('CMSAuthenticate', 'Gmlo\CMS\Middleware\CMSAuthenticate');
 
         $this->app['config']->set('auth.model', 'Gmlo\CMS\Modules\Users\User');
-        //dd(Gmlo\CMS\Modules\Users\User::class);
+
+        $this->extendBlade();
     }
 
     /**
@@ -52,6 +55,12 @@ class CMSServiceProvider extends ServiceProvider
            return new CMS();
         });
 
+
+        $this->app['alert'] = $this->app->share(function($app)
+        {
+            $alertBuilder = new Alert($app['view'], $app['session.store']);
+            return $alertBuilder;
+        });
 
     }
 
@@ -81,5 +90,12 @@ class CMSServiceProvider extends ServiceProvider
     protected function shareGlobalVariables()
     {
         //view()->share('cms_conf', config('cms'));
+    }
+
+    protected function extendBlade()
+    {
+        /*Blade::directive('linkSidebarMenu', function($route, $text, $icon) {
+            return "<?php echo ''; ?>";
+        });*/
     }
 }

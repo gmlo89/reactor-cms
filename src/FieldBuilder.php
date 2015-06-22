@@ -178,4 +178,23 @@ class FieldBuilder {
         array_unshift($params, $method);
         return call_user_func_array([$this, 'input'], $params);
     }
+
+    public function deleteButton($entity, $route = null)
+    {
+        $id = 'deleteButton' . ucwords(str_random());
+
+        if($route === null)
+        {
+            $entity_class = get_class($entity);
+            $entity_class = class_basename($entity_class);
+
+            $entity_route = strtolower($entity_class);
+            $entity_route = str_plural($entity_route);
+
+            $route = 'CMS::admin.' . $entity_route . '.destroy';
+
+        }
+
+        return $this->view->make('CMS::components.fields.delete-button', compact('id', 'entity', 'route'));
+    }
 }

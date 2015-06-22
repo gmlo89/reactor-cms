@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Gmlo\CMS\Modules\Lib\PresentableTrait;
+use Gmlo\CMS\Modules\Users\UserPresenter;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword;
+    use Authenticatable, CanResetPassword, PresentableTrait;
+
+    protected $presenter = UserPresenter::class;
 
     /**
      * The database table used by the model.

@@ -18,6 +18,7 @@ class CmsCreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->enum('type', ['suadmin', 'admin', 'editor']);
+            $table->timestamp('blocked_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

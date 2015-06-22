@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="{{ route('CMS::admin.home') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>{{ Config::get('cms.app_name') }}</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                    <a href="{{ route('cms.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ route('CMS::admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <!-- Left side column. contains the logo and sidebar -->
-        @include('CMS::partials._main-sidebar-menu')
+        @include('CMS::partials._main_sidebar_menu')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

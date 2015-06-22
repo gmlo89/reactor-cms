@@ -6,11 +6,11 @@
             <a href="#">{{ config('cms.app_name') }}</a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">{{ trans('cms::core.login_instructions') }}</p>
+            <p class="login-box-msg">{{ trans('CMS::core.login_instructions') }}</p>
             @include('CMS::partials._errors')
-            {!! Form::open(['route' => 'cms.login', 'method' => 'post']) !!}
+            {!! Form::open(['route' => 'CMS::admin.login', 'method' => 'post']) !!}
                 <div class="form-group has-feedback">
-                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-amil']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail']) !!}
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
@@ -21,17 +21,17 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox"> @lang('cms::core.remember_me')
+                                <input type="checkbox"> @lang('CMS::core.remember_me')
                             </label>
                         </div>
                     </div><!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('cms::core.sign_in')</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('CMS::core.sign_in')</button>
                     </div><!-- /.col -->
                 </div>
             {!! Form::close() !!}
 
-            <a href="#">@lang('cms::core.i_forgot_my_password')</a><br>
+            <a href="#">@lang('CMS::core.i_forgot_my_password')</a><br>
 
         </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

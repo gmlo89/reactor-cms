@@ -1,9 +1,11 @@
 <?php
 
-Route::group(['prefix' => 'admin'], function ()
+Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' => 'CMS::'], function ()
 {
-    Route::get('/', ['as' => 'cms.home', 'uses' => 'Gmlo\CMS\Controllers\AdminController@home']);
-    Route::get('login', ['as' => 'cms.login', 'uses' => 'Gmlo\CMS\Controllers\AuthController@getLogin']);
-    Route::post('login', ['as' => 'cms.login', 'uses' => 'Gmlo\CMS\Controllers\AuthController@postLogin']);
-    Route::get('logout', ['as' => 'cms.logout', 'uses' => 'Gmlo\CMS\Controllers\AuthController@getLogout']);
+    Route::get('/',     ['as' => 'admin.home', 'uses' => 'AdminController@home']);
+    Route::get('login', ['as' => 'admin.login', 'uses' => 'AuthController@getLogin']);
+    Route::post('login', ['as' => 'admin.login', 'uses' => 'AuthController@postLogin']);
+    Route::get('logout', ['as' => 'admin.logout', 'uses' => 'AuthController@getLogout']);
+
+    Route::resource('users', 'UserController');
 });

@@ -34,11 +34,11 @@ class CMSAuthenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
+        if ($this->auth->guest() or $this->auth->user()->blocked_at != null) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->route('cms.login');
+                return redirect()->route('CMS::admin.login');
             }
         }
 

@@ -2,7 +2,7 @@
 <aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu">
-            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
+            {!! CMS::makeLinkForSidebarMenu('CMS::admin.users.index', 'Users', 'fa fa-users') !!}
         </ul>
     </section>
 </aside>
