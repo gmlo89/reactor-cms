@@ -15,4 +15,5 @@ class UserPresenter extends Presenter
         }
         return ucwords($this->type);
     }
+
 }

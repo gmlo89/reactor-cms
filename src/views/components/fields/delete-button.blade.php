@@ -1,5 +1,5 @@
 <!-- Button -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ $id }}"><i class="fa fa-trash-o"></i> Delete</button>
+<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#{{ $id }}"><i class="fa fa-trash-o"></i> Delete</button>
 <!-- Modal -->
 <div class="modal modal-danger fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}Label" aria-hidden="true">
     <div class="modal-dialog">
