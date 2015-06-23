@@ -125,8 +125,7 @@ class UserController extends Controller
     public function updatePassword(UpdatePassRequest $request, $id)
     {
         $user = $this->usersRepo->findOrFail($id);
-        $user->password = \Hash::make($request->get('password'));
-        $this->usersRepo->save($user);
+        $this->usersRepo->update($user, $request->all());
         \Alert::message("Password updated!");
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
@@ -142,8 +141,7 @@ class UserController extends Controller
     public function updateMyPassword(Guard $guard, UpdatePassRequest $request)
     {
         $user = $this->current_user;
-        $user->password = \Hash::make($request->get('password'));
-        $this->usersRepo->save($user);
+        $this->usersRepo->update($user, $request->all());
         \Alert::message("Password updated!");
         return redirect()->route('CMS::admin.home');
     }

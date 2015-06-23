@@ -11,4 +11,13 @@ class UsersRepo extends BaseRepo
     {
         return new User;
     }
+
+    public function prepareData($data = [])
+    {
+        if(isset($data['password']))
+        {
+            $data['password'] = \Hash::make($data['password']);
+        }
+        return $data;
+    }
 }

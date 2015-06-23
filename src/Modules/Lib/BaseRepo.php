@@ -15,9 +15,14 @@ abstract class BaseRepo {
     public function storeNew($data = [])
     {
         $model = $this->getModel();
-        $model->fill($data);
+        $model->fill($this->prepareData($data));
         $model->save();
         return $model;
+    }
+
+    public function prepareData($data = [])
+    {
+        return $data;
     }
 
     public function newModel($data = [])
@@ -29,7 +34,7 @@ abstract class BaseRepo {
 
     public function update($model, $data)
     {
-        $model->fill($data);
+        $model->fill($this->prepareData($data));
         return $model->save();
     }
 
