@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Gmlo\CMS\CMS;
 use Blade;
 use Gmlo\CMS\Alert;
+use Gmlo\CMS\FieldBuilder;
 
 class CMSServiceProvider extends ServiceProvider
 {
@@ -60,6 +61,13 @@ class CMSServiceProvider extends ServiceProvider
         {
             $alertBuilder = new Alert($app['view'], $app['session.store']);
             return $alertBuilder;
+        });
+
+
+        $this->app['field'] = $this->app->share(function($app)
+        {
+            $fieldBuilder = new FieldBuilder($app['form'], $app['view'], $app['session.store']);
+            return $fieldBuilder;
         });
 
     }
