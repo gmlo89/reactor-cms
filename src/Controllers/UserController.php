@@ -15,10 +15,12 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     protected $usersRepo;
+    protected $current_user;
 
-    public function __construct(UsersRepo $usersRepo)
+    public function __construct(UsersRepo $usersRepo, Guard $guard)
     {
         $this->usersRepo = $usersRepo;
+        $this->current_user = $guard->user();
         $this->middleware('CMSAuthenticate');
 
         view()->share('user_types', getUserTypesList());
@@ -100,10 +102,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Guard $guard, $id)
+    public function destroy($id)
     {
         $user = $this->usersRepo->findOrFail($id);
-        if($user->id == $guard->user()->id)
+        if($user->id == $this->current_user->id)
         {
             \Alert::message("You can't delete yourself!", "danger");
             return redirect()->back();
@@ -129,6 +131,23 @@ class UserController extends Controller
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
 
+
+    public function editMyPassword(Guard $guard)
+    {
+        $user = $this->current_user;
+
+        return view('CMS::users.edit-my-password', compact('user'));
+    }
+
+    public function updateMyPassword(Guard $guard, UpdatePassRequest $request)
+    {
+        $user = $this->current_user;
+        $user->password = \Hash::make($request->get('password'));
+        $this->usersRepo->save($user);
+        \Alert::message("Password updated!");
+        return redirect()->route('CMS::admin.home');
+    }
+
     public function statusToggle(Guard $guard, $id)
     {
         $user = $this->usersRepo->findOrFail($id);
@@ -139,7 +158,7 @@ class UserController extends Controller
         }
         else
         {
-            if($user->id == $guard->user()->id)
+            if($user->id == $this->current_user->id)
             {
                 \Alert::message("You can't block yourself!", "danger");
                 return redirect()->back();

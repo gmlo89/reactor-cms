@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{{ route('CMS::admin.users.update-my-password') }}" class="btn btn-default btn-flat">Change my password</a>
                                     </div>
                                     <div class="pull-right">
                                     <a href="{{ route('CMS::admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>

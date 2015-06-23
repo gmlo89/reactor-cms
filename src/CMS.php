@@ -22,7 +22,11 @@ class CMS
     public function makeLinkForSidebarMenu($route_name, $text, $icon)
     {
         $class = '';
-        if($route_name == $this->current_route_name)
+        $prefix = explode('.', $this->current_route_name);
+        array_pop($prefix);
+        $prefix = implode('.', $prefix);
+
+        if($route_name == $this->current_route_name or $prefix . '.index' == $route_name)
         {
             $class = 'active';
         }
