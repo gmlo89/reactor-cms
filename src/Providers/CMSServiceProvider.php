@@ -90,7 +90,7 @@ class CMSServiceProvider extends ServiceProvider
 
         $this->publishes([
 
-            $mFrom . '2015_06_15_000000_cms_create_users_table.php' => $mTo . '2015_06_15_000000_cms_create_users_table.php',
+            $mFrom . '2015_06_15_000000_cms_core_tables.php' => $mTo . '2015_06_15_000000_cms_core_tables.php',
 
         ], 'migrations');
     }

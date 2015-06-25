@@ -67,12 +67,12 @@ class Alert {
         $message_html = '';
         if(!is_array($message))
         {
-            $message_html = '<p>'.$message.'</p>';
+            $message_html = '<p>'.trans($message).'</p>';
         }
         else
         {
             foreach ($message as $msg) {
-                $message_html .='<p>'.$msg.'</p>';
+                $message_html .='<p>'.trans($msg).'</p>';
             }
         }
 

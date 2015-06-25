@@ -27,7 +27,8 @@ class CreateUserRequest extends Request
             'name'      => 'required',
             'email'     => 'email|required|unique:cms_users',
             'type'      => 'required',
-            'password'  => 'required|confirmed'
+            'password'  => 'required|confirmed',
+            'avatar'    => 'image'
         ];
     }
 }

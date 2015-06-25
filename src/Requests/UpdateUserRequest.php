@@ -25,8 +25,9 @@ class UpdateUserRequest extends Request
     {
         return [
             'name'      => 'required',
-            'email'     => 'email|required|unique:cms_users',
+            'email'     => 'email|required',
             'type'      => 'required',
+            'avatar'    => 'image'
         ];
     }
 }

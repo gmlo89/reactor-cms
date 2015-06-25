@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CmsCreateUsersTable extends Migration
+class CmsCoreTables extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class CmsCreateUsersTable extends Migration
         Schema::create('cms_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('avatar')->nullable();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->enum('type', ['suadmin', 'admin', 'editor']);

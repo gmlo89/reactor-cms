@@ -53,25 +53,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="{{ cms_asset_path('img/pug.png') }}" class="user-image" alt="User Image"/>
+                                <img src="{{ Auth::user()->present()->photo }}" class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="{{ cms_asset_path('img/pug.png') }}" class="img-circle" alt="User Image" />
+                                    <img src="{{ Auth::user()->present()->photo }}" class="img-circle" alt="User Image" />
                                     <p>
-                                        {{ Auth::user()->name }} - {{ Auth::user()->type }}
+                                        {{ Auth::user()->name }} - {{ Auth::user()->present()->typeTitle }}
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                    <a href="{{ route('CMS::admin.users.update-my-password') }}" class="btn btn-default btn-flat">Change my password</a>
+                                    <a href="{{ route('CMS::admin.users.update-my-password') }}" class="btn btn-default btn-flat">
+                                        <span class="fa fa-lock"></span> @lang('CMS::users.update_my_password')
+                                    </a>
                                     </div>
                                     <div class="pull-right">
-                                    <a href="{{ route('CMS::admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{ route('CMS::admin.logout') }}" class="btn btn-default btn-flat">
+                                            <span class="fa fa-sign-out"></span> @lang('CMS::core.logout')
+                                        </a>
                                     </div>
                                 </li>
                             </ul>

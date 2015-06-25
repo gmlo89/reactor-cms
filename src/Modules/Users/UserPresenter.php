@@ -16,4 +16,14 @@ class UserPresenter extends Presenter
         return ucwords($this->type);
     }
 
+    public function Photo()
+    {
+        if($this->avatar == null)
+        {
+            return cms_asset_path('img/pug.png');
+        }
+
+        return asset($this->avatar);
+    }
+
 }

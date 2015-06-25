@@ -8,7 +8,7 @@
     </section>
     <section class="content">
         {!! Alert::render() !!}
-        Welcome {{ Auth::user()->name }}
+        @lang('CMS::core.welcome') {{ Auth::user()->name }}
 
     </section>
 @endsection

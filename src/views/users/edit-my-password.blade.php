@@ -3,7 +3,7 @@
 @section('content')
 <section class="content-header">
   <h1>
-    <i class="fa fa-users"></i> Update my password
+    <i class="fa fa-users"></i> @lang('CMS::users.update_my_password')
   </h1>
 </section>
 
@@ -13,7 +13,7 @@
             <div class="box-header">
                 <h3 class="box-title"></h3>
                 <div class="box-tools pull-right">
-                    <button type="submit" class="btn bg-navy"><i class="fa fa-floppy-o"></i> Save</button>
+                    <button type="submit" class="btn bg-navy"><i class="fa fa-floppy-o"></i> @lang('CMS::core.save')</button>
                 </div>
             </div>
             <div class="box-body">

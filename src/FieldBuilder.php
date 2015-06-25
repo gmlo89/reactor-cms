@@ -79,7 +79,7 @@ class FieldBuilder {
             case 'select':
                 if(!isset($attributes['no-instructions']) or !$attributes['no-instructions'])
                 {
-                    $options = array('' => 'Seleccione') + $options;
+                    $options = array('' => trans('CMS::core.select')) + $options;
                 }
                 return $this->form->select($name, $options, $value, $attributes);
             case 'password':

@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            <i class="fa fa-users"></i> Users
+            <i class="fa fa-users"></i> @lang('CMS::users.users')
         </h1>
     </section>
     <section class="content">
@@ -11,7 +11,7 @@
             <div class="box-header">
                 <h3 class="box-title"></h3>
                 <div class="box-tools pull-right">
-                    <a href="{{ route('CMS::admin.users.create') }}" class="btn bg-navy"><i class="fa fa-plus-circle"></i> Create new</a>
+                    <a href="{{ route('CMS::admin.users.create') }}" class="btn bg-navy"><i class="fa fa-plus-circle"></i> @lang('CMS::core.create_new')</a>
                 </div>
             </div>
             <div class="box-body">
@@ -19,10 +19,10 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>E-mail</th>
-                            <th>Type</th>
-                            <th>Status</th>
+                            <th>@lang('CMS::core.name')</th>
+                            <th>@lang('CMS::core.email')</th>
+                            <th>@lang('CMS::core.type')</th>
+                            <th>@lang('CMS::core.status')</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -34,16 +34,16 @@
                                 <td>{{ $user->present()->typeTitle }}</td>
                                 <td>
                                     @if($user->blocked_at == null)
-                                        <span class="label label-success">Active</span>
+                                        <span class="label label-success">@lang('CMS::core.active')</span>
                                     @else
-                                        <span class="label label-danger">Blocked</span>
+                                        <span class="label label-danger">@lang('CMS::core.blocked')</span>
                                     @endif
                                 </td>
-                                <td><a href="{{ route('CMS::admin.users.edit', $user->id) }}" class="btn bg-orange btn-sm">Details <i class="fa fa-arrow-circle-right"></i></a></td>
+                                <td><a href="{{ route('CMS::admin.users.edit', $user->id) }}" class="btn bg-orange btn-xs">@lang('CMS::core.details') <i class="fa fa-arrow-circle-right"></i></a></td>
                             </tr>
                         @empty
                             <tr class="active">
-                                <td colspan="5">- Empty -</td>
+                                <td colspan="5">- @lang('CMS::core.empty') -</td>
                             </tr>
                         @endforelse
                     </tbody>
