@@ -93,11 +93,13 @@ class CMSServiceProvider extends ServiceProvider
             $mFrom . '2015_06_15_000000_cms_core_tables.php' => $mTo . '2015_06_15_000000_cms_core_tables.php',
 
         ], 'migrations');
+
+        $this->shareGlobalVariables();
     }
 
     protected function shareGlobalVariables()
     {
-        //view()->share('cms_conf', config('cms'));
+        //view()->share('cms_current_user', \Auth::user());
     }
 
     protected function extendBlade()

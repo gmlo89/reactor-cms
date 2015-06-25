@@ -104,6 +104,11 @@ class UserController extends Controller
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
 
+
+    /*
+     * Upload a avatar image and save on the user.
+     * Directory: avatars/
+     */
     protected function uploadAvatar($request, $user)
     {
         if($request->hasFile('avatar') and $request->file('avatar')->isValid())
