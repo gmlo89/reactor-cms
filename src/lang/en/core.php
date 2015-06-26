@@ -7,6 +7,8 @@ return [
     'sign_in'               =>  'Sign In',
     'i_forgot_my_password'  => 'I forgot my password',
     'errors_title'          => 'Error, some values may be invalid',
+    'pass_reset_email_send' => 'We have e-mailed your password reset link!',
+    'recover-password'      => 'Recover password',
     'select'                => '- Select -',
     'create_new'            => 'Create new',
     'details'               => 'Details',
@@ -21,4 +23,8 @@ return [
     'save'                  => 'Save',
     'welcome'               => 'Welcome',
     'logout'                => 'Log out',
+    'primary_menu_title'    => 'Menu',
+    'reset'                 => 'Reset',
+    'back_to_login'         => 'Back to login',
+    'reset_password'        => 'Reset Password',
 ];

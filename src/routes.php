@@ -7,6 +7,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' =
     Route::post('login', ['as' => 'admin.login', 'uses' => 'AuthController@postLogin']);
     Route::get('logout', ['as' => 'admin.logout', 'uses' => 'AuthController@getLogout']);
 
+
+    // Password reset link request routes...
+    Route::get('password/email', ['as' => 'admin.recover-password', 'uses' => 'PasswordController@getEmail']);
+    Route::post('password/email', ['as' => 'admin.recover-password', 'uses' => 'PasswordController@postEmail']);
+
+    // Password reset routes...
+    Route::get('password/reset/{token}', ['as' => 'admin.reset-password', 'uses' => 'PasswordController@getReset']);
+    Route::post('password/reset', ['as' => 'admin.reset-password', 'uses' => 'PasswordController@postReset']);
+
     Route::get('users/update-my-password', ['as' => 'admin.users.update-my-password', 'uses' => 'UserController@editMyPassword']);
     Route::put('users/update-my-password', ['as' => 'admin.users.update-my-password', 'uses' => 'UserController@updateMyPassword']);
     Route::resource('users', 'UserController');
