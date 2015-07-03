@@ -148,7 +148,7 @@ class UserController extends Controller
             return redirect()->back();
         }
         $this->usersRepo->delete($user);
-        \Alert::message("User deleted!");
+        \Alert::message("CMS::users.msg_user_deleted");
         return redirect()->route('CMS::admin.users.index');
     }
 

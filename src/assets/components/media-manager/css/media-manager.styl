@@ -1,0 +1,146 @@
+@import 'nib'
+
+body
+	padding-top 50px
+.navbar.navbar-default
+	z-index 9999
+	.btn.pull-right
+		margin-left 5px
+	.asset-options
+		.btn
+			margin-left 5px
+.selected-asset-container
+	margin-top 30px
+	background #ecf0f1
+
+
+.files-container
+	.thumbnail
+		float left
+		width 100px
+		margin 0px
+		height 150px
+		overflow hidden
+		cursor pointer
+		border none
+		position relative
+		padding 15px 0
+		text-align center
+		color #bdc3c7
+		&:hover, &.actived
+			.icon, .img-container
+				border-color none
+				background #eee
+				box-shadow 0px 0px 10px #3498db
+			.name
+				color #333
+.selected-asset-container
+	position relative
+	color #bdc3c7
+	padding-top 30px
+	padding-bottom 30px
+	h3
+		color #000
+		border-bottom 1px solid #999
+		padding-bottom 10px
+		margin-bottom 15px
+	label
+		color #333
+	.thumb-container
+		padding-top 20px
+.thumbnail, .selected-asset-container
+	.img-container
+		width 90px
+		overflow hidden
+		border 1px solid #ddd
+		margin 5px auto 0 auto
+		height 105px
+		border-radius 5px
+		padding 3px
+		img
+			width 100%
+	.name
+		position absolute
+		bottom 5px
+		left 15px
+		right 15px
+		font-size 11px
+		color #999
+		font-family 'Roboto', sans-serif
+		overflow hidden
+		text-overflow ellipsis
+		white-space nowrap
+	.icon
+		font-size 80px
+		font-family FontAwesome
+		border-radius 5px
+		background #fff
+		border 1px solid #ddd
+		padding 10px
+		&:before
+			content '\f15b'
+		&.pdf
+			color #c0392b
+			&:before
+				content '\f1c1'
+		&.txt, &.json
+			color #7f8c8d
+			&:before
+				content '\f15c'
+		&.doc, &.docx
+			color #2980b9
+			&:before
+				content '\f1c2'
+		&.xls, &.xlsx, &.csv
+			color #27ae60
+			&:before
+				content '\f1c3'
+		&.ppt, &.pptx
+			color #c0392b
+			&:before
+				content '\f1c4'
+		&.rar, &.zip, &.tar
+			color #e67e22
+			&:before
+				content '\f1c6'
+
+.uploading-files-container
+	background #333
+	position fixed
+	left 0
+	right 0
+	top 50px
+	bottom 0
+	z-index 9999
+	.dropzone
+		background #f4f4f5
+		position fixed
+		left 10%
+		right 10%
+		top 100px
+		bottom 100px
+		cursor pointer
+		border none
+		.dz-default.dz-message
+			margin-top 0
+			text-align center
+			.icon
+				font-size 80px
+				color #999
+			span
+				font-size 24px
+				color #666
+			small
+				font-size 15px
+				color #999/*
+		.dz-preview.dz-image-preview
+			float left
+			width 100%
+			padding 10px
+			.dz-image
+				float left
+			.dz-details
+				float left
+		&.dz-started
+			.dz-default.dz-message
+				display none*/

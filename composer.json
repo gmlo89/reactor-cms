@@ -9,7 +9,8 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "php artisan vendor:publish"
+            "php artisan vendor:publish",
+            "php artisan migrate"
         ],
         "post-update-cmd": [
             "php artisan vendor:publish"

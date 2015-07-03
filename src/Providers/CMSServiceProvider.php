@@ -4,6 +4,7 @@ namespace Gmlo\CMS\Providers;
 
 
 use App\Http\Kernel;
+use Gmlo\CMS\MediaManager;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Gmlo\CMS\CMS;
@@ -41,6 +42,8 @@ class CMSServiceProvider extends ServiceProvider
         $this->app['config']->set('auth.model', 'Gmlo\CMS\Modules\Users\User');
 
         $this->extendBlade();
+
+        //view()->composer('');
     }
 
     /**
@@ -70,6 +73,16 @@ class CMSServiceProvider extends ServiceProvider
             return $fieldBuilder;
         });
 
+        $this->app['media_manager'] = $this->app->share(function($app)
+        {
+            return new MediaManager();
+        });
+
+
+        $this->app->singleton('command.cms.start', function ($app) {
+            return $app['Gmlo\CMS\Commands\StartCommand'];
+        });
+        $this->commands('command.cms.start');
     }
 
     protected function publishFiles()

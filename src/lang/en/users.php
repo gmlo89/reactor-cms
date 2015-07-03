@@ -19,4 +19,5 @@ return [
     'msg_user_blocked'      => 'User blocked!',
     'msg_user_unblocked'    => 'User unblocked!',
     'msg_you_cant_block_yourself' => 'You can\'t block yourself!',
+    'msg_user_deleted' => 'User deleted!',
 ];

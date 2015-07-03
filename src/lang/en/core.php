@@ -27,4 +27,8 @@ return [
     'reset'                 => 'Reset',
     'back_to_login'         => 'Back to login',
     'reset_password'        => 'Reset Password',
+    'title'                 => 'Title',
+    'published'             => 'Published',
+    'no_published'          => 'No published',
+    'category'              => 'Category',
 ];

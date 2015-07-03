@@ -108,5 +108,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the
           fixed layout. -->
+    <!-- Slimscroll -->
+    <script src="{{ cms_asset_path('plugins/slimScroll/jquery.slimscroll.js') }}" type="text/javascript"></script>
+    <!-- TinyCME -->
+    <script src="{{ cms_asset_path('plugins/tinymce/4.1/tinymce.min.js') }}" type="text/javascript"></script>
+    <!-- SlugifyJS -->
+    <script src="{{ cms_asset_path('plugins/slugify/jquery.slugify.js') }}" type="text/javascript"></script>
+    <script>
+        {!! MediaManager::initializeJs()  !!}
+        tinymce.init({
+            selector: "textarea.html-editor",
+            file_browser_callback : FileManagerBrowser,
+            theme: "modern",
+            height: 600,
+            relative_urls : false,
+            remove_script_host : false,
+            convert_urls : true,
+            plugins: [
+             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+             "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            // content_css: "css/content.css",
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | formatselect | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            style_formats: [
+                {title: 'Bold text', inline: 'b'},
+                {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+                {title: 'Example 1', inline: 'span', classes: 'example1'},
+                {title: 'Example 2', inline: 'span', classes: 'example2'},
+                {title: 'Table styles'},
+                {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+            ]
+        });
+        function FileManagerBrowser(field_name, url, type, win)
+        {
+            tinymce.activeEditor.windowManager.open({
+                    file: media_manager.route,
+                    title: 'Media manager',
+                    width: 900,
+                    height: 450,
+                    resizable: 'yes',
+
+                }, {
+                window: win,
+                input: field_name
+            });
+            return true;
+        }
+
+    </script>
+
+    @yield('scripts')
 </body>
 </html>

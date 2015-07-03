@@ -12,6 +12,13 @@ class FieldBuilder {
     protected $view;
     protected $session;
 
+    // For delete button
+    protected $delete_button = [
+        'entity'    => null,
+        'id'        => null,
+        'route'     => null,
+    ];
+
     protected $defaultClass = [
         'default' => 'form-control',
         'checkbox' => '',
@@ -79,7 +86,12 @@ class FieldBuilder {
             case 'select':
                 if(!isset($attributes['no-instructions']) or !$attributes['no-instructions'])
                 {
+                    if(is_a($options, 'Illuminate\Support\Collection'))
+                    {
+                        $options = $options->toArray();
+                    }
                     $options = array('' => trans('CMS::core.select')) + $options;
+                    //
                 }
                 return $this->form->select($name, $options, $value, $attributes);
             case 'password':
@@ -181,7 +193,24 @@ class FieldBuilder {
 
     public function deleteButton($entity, $route = null)
     {
-        $id = 'deleteButton' . ucwords(str_random());
+        $view = $this->makeDeleteButton($entity, $route);
+        $view .= $this->renderDeleteButtonDialogs();
+        return $view;
+    }
+
+    public function makeDeleteButton($entity, $route = null)
+    {
+        $this->delete_button = [
+            'id'    => 'deleteButton' . ucwords(str_random()),
+            'route' => $route,
+            'entity' => $entity
+        ];
+        return $this->view->make('CMS::components.fields.delete-button', $this->delete_button)->render();
+    }
+
+    public function renderDeleteButtonDialogs()
+    {
+        extract($this->delete_button);
 
         if($route === null)
         {
@@ -195,6 +224,6 @@ class FieldBuilder {
 
         }
 
-        return $this->view->make('CMS::components.fields.delete-button', compact('id', 'entity', 'route'));
+        return $this->view->make('CMS::components.fields.dialog-delete-button', compact('id', 'entity', 'route'))->render();
     }
 }

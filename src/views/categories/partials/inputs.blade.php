@@ -1,0 +1,1 @@
+{!! Field::text('title') !!}

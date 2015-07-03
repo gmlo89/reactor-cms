@@ -11,4 +11,9 @@ return [
     // Users Module
 
     'user_types' => ['suadmin', 'admin', 'editor'],
+
+    // Media manager
+
+    'default_path' => 'media-manager',
+
 ];
