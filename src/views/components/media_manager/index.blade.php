@@ -71,7 +71,6 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
     <component
         is="@{{ currentView }}"
         change-component="@{{ getComponent }}"
