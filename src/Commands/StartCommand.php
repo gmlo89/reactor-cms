@@ -71,6 +71,7 @@ class StartCommand extends Command
             return false;
         }
         $data['type'] = 'suadmin';
+        $data['password'] = \Hash::make($data['password']);
 
         User::create($data);
 
