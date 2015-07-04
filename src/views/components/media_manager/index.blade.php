@@ -39,7 +39,6 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Media manager
                 <span v-if="uploading"> - @lang('CMS::media_manager.uploading')</span>
             </a>
         </div>
@@ -63,7 +62,7 @@
             <div v-if="selectingAsset" class="asset-options">
                 <button v-on="click: deleteAsset" class="btn btn-danger btn-sm navbar-btn pull-left"><span class="glyphicon glyphicon-trash"></span></button>
                 <button v-on="click: editAsset" class="btn btn-info btn-sm navbar-btn pull-left"><span class="glyphicon glyphicon-pencil"></span></button>
-                <p class="navbar-text">@{{ selectedAsset.name }}</p>
+                <p class="navbar-text">@{{ selectedAsset.name.substring(0, 20) }}</p>
             </div>
 
             <button v-if="! uploading" v-on="click: showUploadFile" type="button" class="btn btn-default navbar-btn pull-right"><span class="glyphicon glyphicon-open"></span> @lang('CMS::media_manager.upload')</button>
