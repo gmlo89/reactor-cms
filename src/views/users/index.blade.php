@@ -50,7 +50,7 @@
                 </table>
             </div>
             <div class="box-footer clearfix">
-                {{ $users->render() }}
+                {!! $users->render() !!}
             </div>
         </div>
     </section>

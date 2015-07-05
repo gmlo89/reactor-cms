@@ -48,7 +48,7 @@
                 </table>
             </div>
             <div class="box-footer clearfix">
-                {{ $articles->render() }}
+                {!! $articles->render() !!}
             </div>
         </div>
     </section>
