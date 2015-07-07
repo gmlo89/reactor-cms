@@ -41,7 +41,7 @@ class CategoriesController extends Controller
     {
         $category = $this->categoriesRepo->storeNew($request->all());
 
-        \Alert::message('CMS::categories.msg_category_created');
+        \Alert::success('CMS::categories.msg_category_created');
         return redirect()->route('CMS::admin.categories.edit', $category->id);
     }
 
@@ -57,7 +57,7 @@ class CategoriesController extends Controller
         $category = $this->categoriesRepo->findOrFail($id);
         $this->categoriesRepo->update($category, $request->all());
 
-        \Alert::message('CMS::categories.msg_category_updated');
+        \Alert::success('CMS::categories.msg_category_updated');
         return redirect()->route('CMS::admin.categories.edit', $category->id);
     }
 
@@ -65,7 +65,7 @@ class CategoriesController extends Controller
     {
         $category = $this->categoriesRepo->findOrFail($id);
         $this->categoriesRepo->delete($category);
-        \Alert::message("CMS::categories.msg_category_deleted");
+        \Alert::success("CMS::categories.msg_category_deleted");
         return redirect()->route('CMS::admin.categories.index');
     }
 }

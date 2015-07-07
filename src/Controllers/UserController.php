@@ -58,7 +58,7 @@ class UserController extends Controller
         // Upload avatar
         $this->uploadAvatar($request, $user);
 
-        \Alert::message('CMS::users.msg_user_created');
+        \Alert::success('CMS::users.msg_user_created');
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
         // Upload avatar
         $this->uploadAvatar($request, $user);
 
-        \Alert::message('CMS::users.msg_user_updated');
+        \Alert::success('CMS::users.msg_user_updated');
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
 
@@ -144,11 +144,11 @@ class UserController extends Controller
         $user = $this->usersRepo->findOrFail($id);
         if($user->id == $this->current_user->id)
         {
-            \Alert::message("CMS::users.msg_you_cant_delete_yourself", "danger");
+            \Alert::danger("CMS::users.msg_you_cant_delete_yourself");
             return redirect()->back();
         }
         $this->usersRepo->delete($user);
-        \Alert::message("CMS::users.msg_user_deleted");
+        \Alert::success("CMS::users.msg_user_deleted");
         return redirect()->route('CMS::admin.users.index');
     }
 
@@ -163,7 +163,7 @@ class UserController extends Controller
     {
         $user = $this->usersRepo->findOrFail($id);
         $this->usersRepo->update($user, $request->all());
-        \Alert::message("CMS::users.msg_password_updated");
+        \Alert::success("CMS::users.msg_password_updated");
         return redirect()->route('CMS::admin.users.edit', $user->id);
     }
 
@@ -179,7 +179,7 @@ class UserController extends Controller
     {
         $user = $this->current_user;
         $this->usersRepo->update($user, $request->all());
-        \Alert::message("CMS::users.msg_password_updated");
+        \Alert::success("CMS::users.msg_password_updated");
         return redirect()->route('CMS::admin.home');
     }
 
@@ -189,17 +189,17 @@ class UserController extends Controller
         if($user->isBlocked())
         {
             $user->blocked_at = null;
-            \Alert::message("CMS::users.msg_user_unblocked");
+            \Alert::success("CMS::users.msg_user_unblocked");
         }
         else
         {
             if($user->id == $this->current_user->id)
             {
-                \Alert::message("CMS::users.msg_you_cant_block_yourself", "danger");
+                \Alert::danger("CMS::users.msg_you_cant_block_yourself");
                 return redirect()->back();
             }
             $user->blocked_at = Carbon::now();
-            \Alert::message("CMS::users.msg_user_blocked");
+            \Alert::success("CMS::users.msg_user_blocked");
         }
         $this->usersRepo->save($user);
 

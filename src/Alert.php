@@ -81,4 +81,15 @@ class Alert {
             ->with('message',   $message_html);
     }
 
+    public function __call($name, $arguments)
+    {
+        if(isset($arguments[0]) and is_string($arguments[0]))
+        {
+            return $this->message($arguments[0], str_slug(snake_case($name)));
+        }
+
+        $className = get_class($this);
+        throw new \BadMethodCallException("Call to undefined method {$className}::{$name}()");
+    }
+
 }

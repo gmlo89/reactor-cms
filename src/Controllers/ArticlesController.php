@@ -26,7 +26,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        $articles = $this->articlesRepo->orderBy('created_at', 'desc')->paginate();
+        $articles = $this->articlesRepo->orderBy('created_at', 'desc')->paginate(2);
 
         return view('CMS::articles.index', compact('articles'));
     }
@@ -41,7 +41,7 @@ class ArticlesController extends Controller
     {
         $article = $this->articlesRepo->storeNew($request->all());
 
-        \Alert::message('CMS::articles.msg_article_created');
+        \Alert::success('CMS::articles.msg_article_created');
         return redirect()->route('CMS::admin.articles.edit', $article->id);
     }
 
@@ -58,7 +58,7 @@ class ArticlesController extends Controller
         $article = $this->articlesRepo->findOrFail($id);
         $this->articlesRepo->update($article, $request->all());
 
-        \Alert::message('CMS::articles.msg_article_updated');
+        \Alert::success('CMS::articles.msg_article_updated');
         return redirect()->route('CMS::admin.articles.edit', $article->id);
 
     }
@@ -68,7 +68,7 @@ class ArticlesController extends Controller
         $article = $this->articlesRepo->findOrFail($id);
         $this->articlesRepo->delete($article);
 
-        \Alert::message('CMS::articles.msg_article_deleted');
+        \Alert::success('CMS::articles.msg_article_deleted');
         return redirect()->route('CMS::admin.articles.index');
     }
 
@@ -90,7 +90,7 @@ class ArticlesController extends Controller
         }
 
         $this->articlesRepo->update($article, $data);
-        \Alert::message($message);
+        \Alert::success($message);
         return redirect()->route('CMS::admin.articles.edit', $article->id);
     }
 }
