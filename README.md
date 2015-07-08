@@ -1,4 +1,4 @@
-# Simple CMS
+# Reactor CMS
 
 Its a PHP CMS powered by Laravel 5.1, ideal for small websites that require a blog
 
