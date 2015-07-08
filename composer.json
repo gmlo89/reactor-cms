@@ -3,7 +3,7 @@
     "description": "Reactor CMS with  Laravel 5.1",
     "keywords": ["Laravel", "CMS", "PHP"],
     "version": "0",
-    "licence": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Giovanni Lopez",
