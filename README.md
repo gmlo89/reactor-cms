@@ -1,5 +1,7 @@
 # Reactor CMS
 
+[![Latest Stable Version](https://poser.pugx.org/gmlo/cms/v/stable)](https://packagist.org/packages/gmlo/cms) [![Total Downloads](https://poser.pugx.org/gmlo/cms/downloads)](https://packagist.org/packages/gmlo/cms) [![Latest Unstable Version](https://poser.pugx.org/gmlo/cms/v/unstable)](https://packagist.org/packages/gmlo/cms) [![License](https://poser.pugx.org/gmlo/cms/license)](https://packagist.org/packages/gmlo/cms)
+
 Its a PHP CMS powered by Laravel 5.1, ideal for small websites that require a blog
 
 ##Modules included:
