@@ -3,7 +3,9 @@
 namespace Gmlo\CMS\Commands;
 
 use Gmlo\CMS\Modules\Users\User;
+use Gmlo\CMS\Providers\CMSServiceProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 
 class StartCommand extends Command
@@ -40,12 +42,47 @@ class StartCommand extends Command
         $this->info('Created by @gmlo_89');
         $this->info('*********************************');
 
-        while(!$this->createUser())
+        $this->info('Publish files...');
+
+        Artisan::call('vendor:publish');
+
+        if ($this->confirm('You want to create and run the migrations? [y|N]'))
         {
+            $this->migrations();
+        }
+
+        if ($this->confirm('You want to create a new user? [y|N]'))
+        {
+            while (!$this->createUser()){}
         }
 
         $this->info('CMS Started!');
     }
+
+    protected function migrations()
+    {
+        $this->info('Creating migration!');
+        $files = \File::files($this->laravel['path.database'].'/migrations');
+        foreach($files as $file)
+        {
+            if(ends_with((string)$file, '_cms_core_tables.php'))
+            {
+                throw new \Exception("You could have a similar migration on {$file}!");
+            }
+        }
+
+        $path =  $this->laravel['path.database'].'/migrations/' . date('Y_m_d_His') . '_cms_core_tables.php';
+        $stub = __DIR__ . '/../stubs/core.stub';
+
+        if ( ! \File::copy($stub, $path))
+        {
+            throw new \Exception('We could not create the migration!');
+        }
+
+        $this->info('Run migration!');
+        Artisan::call('migrate');
+    }
+
 
     protected function createUser()
     {

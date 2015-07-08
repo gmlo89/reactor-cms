@@ -6,7 +6,8 @@ use Collective\Html\FormBuilder as Form;
 use Illuminate\View\Factory as View;
 use Illuminate\Session\Store as Session;
 
-class FieldBuilder {
+class FieldBuilder
+{
 
     protected $form;
     protected $view;
@@ -91,13 +92,11 @@ class FieldBuilder {
                         $options = $options->toArray();
                     }
                     $options = array('' => trans('CMS::core.select')) + $options;
-                    //
                 }
                 return $this->form->select($name, $options, $value, $attributes);
             case 'password':
                 return $this->form->password($name, $attributes);
             case 'checkbox':
-
                 return $this->form->checkbox($name, $value, isset($attributes['checked']), $attributes);
             case 'textarea':
                 return $this->form->textarea($name, $value, $attributes);
@@ -147,9 +146,7 @@ class FieldBuilder {
         $icon = '';
         if(isset($attributes['icon']))
         {
-
             $icon = $attributes['icon'];
-
         }
 
         $label = $this->buildLabel($name, $attributes);

@@ -3,8 +3,9 @@
     "description": "CMS with  Laravel 5.1",
     "authors": [
         {
-            "name": "Giovanni Mac",
-            "email": "gmlo89@hotmail.com"
+            "name": "Giovanni Lopez",
+            "email": "gmlo89@hotmail.com",
+            "twitter": "@gmlo_89"
         }
     ],
     "scripts": {

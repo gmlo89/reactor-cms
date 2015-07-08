@@ -42,8 +42,6 @@ class CMSServiceProvider extends ServiceProvider
         $this->app['config']->set('auth.model', 'Gmlo\CMS\Modules\Users\User');
 
         $this->extendBlade();
-
-        //view()->composer('');
     }
 
     /**
@@ -96,16 +94,6 @@ class CMSServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../assets' => public_path('vendor/gmlo/cms'),
         ], 'public');
-
-        // Migrations
-        $mFrom  = __DIR__ . '/../migrations/';
-        $mTo    = $this->app['path.database'] . '/migrations/';
-
-        $this->publishes([
-
-            $mFrom . '2015_06_15_000000_cms_core_tables.php' => $mTo . '2015_06_15_000000_cms_core_tables.php',
-
-        ], 'migrations');
 
         $this->shareGlobalVariables();
     }

@@ -5,11 +5,11 @@ namespace Gmlo\CMS;
 use Illuminate\View\Factory as View;
 use Illuminate\Session\Store as Session;
 
-class Alert {
+class Alert
+{
 
     protected $session_name = 'alertMessages';
     protected $template     = 'CMS::components.alerts.default';
-
     protected $session;
     protected $view;
 
@@ -19,7 +19,7 @@ class Alert {
         $this->view     = $view;
     }
 
-    public function message($message, $type='success')
+    public function message($message, $type = 'success')
     {
         $message = trans($message);
         $messages = $this->session->get($this->session_name, array());
@@ -34,6 +34,11 @@ class Alert {
         $this->session->flash($this->session_name, $messages);
     }
 
+
+    /**
+     * Show the html alert
+     * @return string
+     */
     public function render()
     {
         $messages   = $this->session->get($this->session_name, null);
@@ -42,7 +47,7 @@ class Alert {
         {
             $this->session->flash($this->session_name, null);
             foreach ($messages as $message) {
-                $html.= Alert::make($message['message'], $message['type']);
+                $html .= $this->make($message['message'], $message['type']);
             }
         }
 
