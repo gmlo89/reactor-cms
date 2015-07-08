@@ -47,15 +47,10 @@ $ composer update
 	'Html' => Collective\Html\HtmlFacade::class,
 ],
 ```
-##### Publish files
-```sh
-$ php artisan vendor:publish
-```
-##### Configure your database and run migrations
-Configure your preference database.
-```sh
-$ php artisan migrate
-```
+
+##### Configure your preference database.
+
+
 ##### Configure the CMS
 ```sh
 $ php artisan cms:start
