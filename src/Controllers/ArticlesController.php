@@ -26,7 +26,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        $articles = $this->articlesRepo->orderBy('created_at', 'desc')->paginate(2);
+        $articles = $this->articlesRepo->orderBy('created_at', 'desc')->paginate();
 
         return view('CMS::articles.index', compact('articles'));
     }

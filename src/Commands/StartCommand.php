@@ -2,6 +2,8 @@
 
 namespace Gmlo\CMS\Commands;
 
+use Gmlo\CMS\Modules\Articles\Article;
+use Gmlo\CMS\Modules\Categories\Category;
 use Gmlo\CMS\Modules\Users\User;
 use Gmlo\CMS\Providers\CMSServiceProvider;
 use Illuminate\Console\Command;
@@ -56,7 +58,19 @@ class StartCommand extends Command
             while (!$this->createUser()){}
         }
 
+        if ($this->confirm('You want to create a demo site? [y|N]'))
+        {
+            $this->makeDemoSite();
+        }
+
         $this->info('CMS Started!');
+    }
+
+    protected function makeDemoSite()
+    {
+        factory(User::class, 'cms_site_demo', 5)->create();
+        factory(Category::class, 'cms_site_demo', 5)->create();
+        factory(Article::class, 'cms_site_demo', 30)->create();
     }
 
     protected function migrations()

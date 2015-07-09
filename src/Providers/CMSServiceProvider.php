@@ -5,6 +5,9 @@ namespace Gmlo\CMS\Providers;
 
 use App\Http\Kernel;
 use Gmlo\CMS\MediaManager;
+use Gmlo\CMS\Modules\Articles\Article;
+use Gmlo\CMS\Modules\Categories\Category;
+use Gmlo\CMS\Modules\Users\User;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Gmlo\CMS\CMS;
@@ -81,6 +84,54 @@ class CMSServiceProvider extends ServiceProvider
             return $app['Gmlo\CMS\Commands\StartCommand'];
         });
         $this->commands('command.cms.start');
+
+
+        $this->registerFakers();
+    }
+
+    protected function registerFakers()
+    {
+
+        // Users
+        $factory = app('Illuminate\Database\Eloquent\Factory');
+        $factory->defineAs(User::class, 'cms_site_demo', function ($faker) {
+            return [
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => str_random(10),
+                'type' => $faker->randomElement(['admin', 'editor']),
+                'remember_token' => str_random(10),
+            ];
+        });
+
+
+        // Categories
+        $factory->defineAs( Category::class, 'cms_site_demo', function ($faker) {
+            $title = $faker->sentence;
+            return [
+                'title'         => $title,
+            ];
+        });
+
+        // Articles
+        $factory->defineAs( Article::class, 'cms_site_demo', function ($faker) {
+            $sumary = $faker->paragraph;
+            $title = $faker->sentence;
+            return [
+                'title'         => $title,
+                'slug_url'      => str_slug($title),
+                'primary_img'   => null,
+                'sumary'        => $sumary,
+                'body'          => $faker->text,
+                'title_seo'     => $title,
+                'meta_keywords'     => implode(', ', $faker->words(10)),
+                'meta_description'  => $sumary,
+                'category_id'       => $faker->numberBetween(1, 5),
+                'created_by'        => $faker->numberBetween(1, 5),
+                'views'             => $faker->numberBetween(0, 200),
+                'published_at'      => $faker->dateTimeThisYear()->format('Y-m-d H:i:s'),
+            ];
+        });
     }
 
     protected function publishFiles()
