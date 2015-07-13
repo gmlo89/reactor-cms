@@ -34,6 +34,7 @@ class MediaManager
         $scripts .= "window.{$this->namespace}.upload_route = '{$upload_route}';";
         $scripts .= "window.{$this->namespace}.update_route = '{$update_route}';";
         $scripts .= "window.{$this->namespace}.finder_route = '{$finder_route}';";
+        $scripts .= "window.{$this->namespace}.destroy_route = '{$destroy_route}';";
 
         return $scripts;
     }
