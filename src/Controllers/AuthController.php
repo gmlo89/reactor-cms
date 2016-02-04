@@ -30,7 +30,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'getLogout']);
         $this->loginView = route('CMS::admin.login');
         $this->redirectTo = route('CMS::admin.home');
     }
