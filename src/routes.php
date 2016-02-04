@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' => 'CMS::'], function ()
+Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' => 'CMS::', 'middleware' => 'web'], function ()
 {
     Route::get('/',     ['as' => 'admin.home', 'uses' => 'AdminController@home']);
     Route::get('login', ['as' => 'admin.login', 'uses' => 'AuthController@getLogin']);
