@@ -4,7 +4,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' =
 {
     Route::auth();
 
-
     // Password reset link request routes...
     Route::get('password/email', ['as' => 'admin.recover-password', 'uses' => 'PasswordController@getEmail']);
     Route::post('password/email', ['as' => 'admin.recover-password', 'uses' => 'PasswordController@postEmail']);
