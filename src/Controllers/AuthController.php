@@ -2,8 +2,7 @@
 
 namespace Gmlo\CMS\Controllers;
 
-use Gmlo\CMS\Modules\Users\User;
-use Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -31,15 +30,15 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => 'logout']);
         $this->loginView = route('CMS::admin.login');
         $this->redirectTo = route('CMS::admin.home');
     }
 
 
-//    public function getLogin()
-//    {
-//        return view('CMS::auth.login');
-//    }
+    public function getLogin()
+    {
+        return view('CMS::auth.login');
+    }
 
 }

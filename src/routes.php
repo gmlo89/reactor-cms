@@ -2,7 +2,10 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Gmlo\CMS\Controllers', 'as' => 'CMS::', 'middleware' => ['web']], function ()
 {
-    Route::auth();
+    Route::get('/',     ['as' => 'admin.home', 'uses' => 'AdminController@home']);
+    Route::get('login', ['as' => 'admin.login', 'uses' => 'AuthController@getLogin']);
+    Route::post('login', ['as' => 'admin.login', 'uses' => 'AuthController@postLogin']);
+    Route::get('logout', ['as' => 'admin.logout', 'uses' => 'AuthController@getLogout']);
 
     // Password reset link request routes...
     Route::get('password/email', ['as' => 'admin.recover-password', 'uses' => 'PasswordController@getEmail']);
