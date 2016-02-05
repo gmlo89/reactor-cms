@@ -58,6 +58,12 @@ $ composer update
 $ php artisan cms:start
 ```
 Run this command and type the required data.
+
+Make sure update the auth.php config file with the User Model of the CMS.
+```
+    'model' => \Gmlo\CMS\Modules\Users\User::class,
+```
+
 ##### Also you can set more configurations on `config/cms.php`.
 ##### Enjoy it!
 Go to the web browser and put `your-domain/admin`.
